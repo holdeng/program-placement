@@ -1,0 +1,33 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>edu.umich.umms</groupId>
+    <artifactId>tomcatdeploy</artifactId>
+    <name>program-placement Tomcat Deploy</name>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>war</packaging>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.holden.geoff.programplacement</groupId>
+            <artifactId>program-placement-web</artifactId>
+            <type>war</type>
+            <version>${release.version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <server>${tomcat.server}</server>
+                    <url>${tomcat.url}</url>
+                    <path>/program-placement</path>
+                    <warFile>${project.build.directory}/dependency/program-placement-web.war</warFile>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
